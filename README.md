@@ -17,6 +17,11 @@ Portfolio template built with Astro. All your content lives in simple JSON files
 
 ---
 
+![Astro Portfolio Theme Official Sweater](https://raw.githubusercontent.com/MarcusHoltz/marcusholtz.github.io/refs/heads/main/assets/img/header/header--astro--portfolio-theme-github-gitlab-pages.jpg "Generate Your Portfolio Now")
+
+
+---
+
 ## Quick Start
 
 **With Docker (recommended):**

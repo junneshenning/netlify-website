@@ -5,7 +5,7 @@ import certsData from '../data/certifications.json';
 import expertiseData from '../data/expertise.json';
 import projectsData from '../data/projects.json';
 
-const resumeProjects = projectsData.slice(0, 6);
+const resumeProjects = projectsData.filter(p => p.resume);
 
 const earnedCerts = certsData.filter(c => c.status === 'Earned');
 const inProgressCerts = certsData.filter(c => c.status !== 'Earned');
@@ -68,7 +68,7 @@ const inProgressCerts = certsData.filter(c => c.status !== 'Earned');
   <section class="resume-section">
     <h2 class="section-title">Notable Projects</h2>
     <div class="projects-list">
-      {resumeProjects.map(project => (
+      {resumeProjects.map(project => project && (
         <div class="project-item">
           <div class="project-header">
             <span class="project-title">{project.title}</span>

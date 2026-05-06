@@ -14,7 +14,7 @@ Portfolio template built with Astro. All your content lives in simple JSON files
 | **Hosting**            | 100% static output, deploys to any CDN or VPS for free                |
 | **SEO & PWA**          | OG tags, web manifest, all favicon sizes, works offline               |
 | **Accessibility**      | Keyboard nav, ARIA labels, skip link, reduced-motion support          |
-| **Stack**              | Astro 4, Tailwind CSS 3, TypeScript, GitHub API + RSS                 |
+| **Stack**              | Astro 6, Tailwind CSS 4, TypeScript, GitHub API + RSS                 |
 | **Requirements**       | Docker + Docker Compose, or Node 18+ with npm                         |
 
 ---

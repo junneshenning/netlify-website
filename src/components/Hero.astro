@@ -54,7 +54,7 @@ const heroParts = personalData.heroRole.split(' & ');
           Welcome to my portfolio
         </p>
 
-        <div class="reveal text-backdrop relative" style="transition-delay: 0.1s;">
+        <div class="reveal text-backdrop profile-card relative" style="transition-delay: 0.1s;">
           <h1 class="font-bold leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
             Hi, I'm<br />
             <span class="gradient-text">{personalData.name}</span>
@@ -83,8 +83,8 @@ const heroParts = personalData.heroRole.split(' & ');
               alt={personalData.photoAlt ?? ''}
               class="portrait-peek-img"
               loading="lazy"
-              width="140"
-              height="140"
+              width="160"
+              height="160"
             />
           </div>
         </div>
@@ -752,17 +752,29 @@ const heroParts = personalData.heroRole.split(' & ');
     display: block;
   }
 
+  @media (min-width: 1024px) {
+    .profile-card {
+      padding-right: 13rem;
+    }
+  }
+
   .portrait-peek-wrapper {
     position: absolute;
-    top: -2.5rem;
-    right: -2.5rem;
     z-index: 10;
+  }
+
+  @media (min-width: 1024px) {
+    .portrait-peek-wrapper {
+      top: 50%;
+      right: 1.5rem;
+      transform: translateY(-50%);
+    }
   }
 
   .portrait-peek-img {
     display: block;
-    width: 130px;
-    height: 130px;
+    width: 160px;
+    height: 160px;
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid var(--bg-card);
@@ -783,12 +795,12 @@ const heroParts = personalData.heroRole.split(' & ');
 
   @media (max-width: 480px) {
     .portrait-peek-wrapper {
-      top: -1.75rem;
+      top: -2rem;
       right: -0.5rem;
     }
     .portrait-peek-img {
-      width: 80px;
-      height: 80px;
+      width: 95px;
+      height: 95px;
       border-width: 3px;
     }
   }
@@ -799,8 +811,8 @@ const heroParts = personalData.heroRole.split(' & ');
       right: -1rem;
     }
     .portrait-peek-img {
-      width: 100px;
-      height: 100px;
+      width: 110px;
+      height: 110px;
       border-width: 3px;
     }
   }
@@ -811,8 +823,8 @@ const heroParts = personalData.heroRole.split(' & ');
       right: -1.5rem;
     }
     .portrait-peek-img {
-      width: 110px;
-      height: 110px;
+      width: 130px;
+      height: 130px;
     }
   }
 

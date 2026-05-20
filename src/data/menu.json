@@ -19,28 +19,16 @@
       "desc": "Tools and technologies I use"
     },
     {
-      "label": "Portfolio",
-      "shortLabel": "Portfolio",
-      "href": "#portfolio",
-      "desc": "Client and commercial work"
-    },
-    {
-      "label": "Projects",
-      "shortLabel": "Projects",
+      "label": "Experience",
+      "shortLabel": "Experience",
       "href": "#projects",
-      "desc": "Personal projects and experiments"
+      "desc": "My professional experience"
     },
     {
       "label": "Certifications",
       "shortLabel": "Certs",
       "href": "#certifications",
       "desc": "Training, courses, and credentials"
-    },
-    {
-      "label": "Services",
-      "shortLabel": "Services",
-      "href": "#services",
-      "desc": "Sites and projects I run"
     },
     {
       "label": "Contact",

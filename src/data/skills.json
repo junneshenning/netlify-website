@@ -1,59 +1,29 @@
 [
   {
-    "title": "Design & Illustration",
+    "title": "OS & Administration",
     "skills": [
-      { "name": "Figma", "logo": "/images/icons/devicons/figma-original.svg" },
-      { "name": "Photoshop", "logo": "/images/icons/devicons/photoshop-line.svg" },
-      { "name": "Illustrator", "logo": "/images/icons/devicons/illustrator-line.svg" },
-      { "name": "Blender", "logo": "/images/icons/devicons/blender-original.svg" },
-      { "name": "Sketch", "logo": "/images/icons/devicons/sketch-original.svg" }
+      { "name": "Linux", "logo": "/images/icons/devicons/linux-original.svg" },
+      { "name": "Unix", "logo": "/images/icons/devicons/unix-original.svg" },
+      { "name": "Web Servers Tuning", "logo": "/images/icons/devicons/nginx-original.svg" },
+      { "name": "Shell Scripting", "logo": "/images/icons/devicons/bash-original.svg" }
     ]
   },
   {
-    "title": "Web & Frontend",
+    "title": "Web Stack",
     "skills": [
-      { "name": "HTML5", "logo": "/images/icons/devicons/html5-original.svg" },
-      { "name": "CSS3", "logo": "/images/icons/devicons/css3-original.svg" },
-      { "name": "JavaScript", "logo": "/images/icons/devicons/javascript-original.svg" },
-      { "name": "TypeScript", "logo": "/images/icons/devicons/typescript-original.svg" },
-      { "name": "React", "logo": "/images/icons/devicons/react-original.svg" },
-      { "name": "Bootstrap", "logo": "/images/icons/devicons/bootstrap-original-wordmark.svg" }
-    ]
-  },
-  {
-    "title": "Motion, 3D & Video",
-    "skills": [
-      { "name": "Three.js", "logo": "/images/icons/devicons/threejs-original.svg" },
-      { "name": "After Effects", "logo": "/images/icons/devicons/aftereffects-plain.svg" },
-      { "name": "Premiere Pro", "logo": "/images/icons/devicons/premierepro-plain.svg" },
-      { "name": "Photoshop", "logo": "/images/icons/devicons/photoshop-original.svg" }
-    ]
-  },
-  {
-    "title": "Platforms & Publishing",
-    "skills": [
+      { "name": "LAMP Stack", "logo": "/images/icons/devicons/php-original.svg" },
+      { "name": "HTML5/CSS3", "logo": "/images/icons/devicons/html5-original.svg" },
       { "name": "WordPress", "logo": "/images/icons/devicons/wordpress-original.svg" },
-      { "name": "Drupal", "logo": "/images/icons/devicons/drupal-original-wordmark.svg" },
-      { "name": "Hugo", "logo": "/images/icons/devicons/hugo-original-wordmark.svg" },
-      { "name": "AWS", "logo": "/images/icons/devicons/amazonwebservices-original-wordmark.svg" }
+      { "name": "Magento", "logo": "/images/icons/devicons/magento-original.svg" }
     ]
   },
   {
-    "title": "Dev & Workflow Tools",
+    "title": "Infrastructure & Services",
     "skills": [
-      { "name": "Git", "logo": "/images/icons/devicons/git-original-wordmark.svg" },
-      { "name": "GitHub", "logo": "/images/icons/devicons/github-original.svg" },
-      { "name": "Bash", "logo": "/images/icons/devicons/bash-original.svg" },
-      { "name": "Markdown", "logo": "/images/icons/devicons/markdown-original.svg" }
-    ]
-  },
-  {
-    "title": "Data & Infrastructure",
-    "skills": [
-      { "name": "SQLite", "logo": "/images/icons/devicons/sqlite-original-wordmark.svg" },
-      { "name": "Nginx", "logo": "/images/icons/devicons/nginx-original.svg" },
-      { "name": "Docker", "logo": "/images/icons/devicons/docker-original-wordmark.svg" },
-      { "name": "Prometheus", "logo": "/images/icons/devicons/prometheus-original-wordmark.svg" }
+      { "name": "Hosting / Cpanel", "logo": "/images/icons/devicons/servers-original.svg" },
+      { "name": "Domains / DNS", "logo": "/images/icons/devicons/network-original.svg" },
+      { "name": "OnPage SEO", "logo": "/images/icons/devicons/google-original.svg" },
+      { "name": "Web Security", "logo": "/images/icons/devicons/security-original.svg" }
     ]
   }
 ]

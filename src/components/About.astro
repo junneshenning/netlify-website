@@ -13,7 +13,7 @@ import personalData from '../data/personal.json';
       </div>
 
       <div class="card reveal" style="transition-delay: 0.15s;">
-        <p class="text-lg text-slate-300 leading-relaxed">
+        <p class="text-lg text-slate-600 leading-relaxed">
           {personalData.aboutLong}
         </p>
 
@@ -40,8 +40,8 @@ import personalData from '../data/personal.json';
               </svg>
             </div>
             <div>
-              <h3 class="text-white font-semibold mb-1">Role</h3>
-              <p class="text-slate-400 text-sm">{personalData.title}</p>
+              <h3 class="text-slate-800 font-semibold mb-1">Role</h3>
+              <p class="text-slate-600 text-sm">{personalData.title}</p>
             </div>
           </div>
 
@@ -70,8 +70,8 @@ import personalData from '../data/personal.json';
               </svg>
             </div>
             <div>
-              <h3 class="text-white font-semibold mb-1">Location</h3>
-              <p class="text-slate-400 text-sm">{personalData.location}</p>
+              <h3 class="text-slate-800 font-semibold mb-1">Location</h3>
+              <p class="text-slate-600 text-sm">{personalData.location}</p>
             </div>
           </div>
 
@@ -94,8 +94,8 @@ import personalData from '../data/personal.json';
               </svg>
             </div>
             <div>
-              <h3 class="text-white font-semibold mb-1">Experience</h3>
-              <p class="text-slate-400 text-sm">
+              <h3 class="text-slate-800 font-semibold mb-1">Experience</h3>
+              <p class="text-slate-600 text-sm">
                 {personalData.yearsExperience} Years of Experience
               </p>
             </div>
@@ -121,8 +121,8 @@ import personalData from '../data/personal.json';
               </svg>
             </div>
             <div>
-              <h3 class="text-white font-semibold mb-1">Education</h3>
-              <p class="text-slate-400 text-sm">{personalData.education}</p>
+              <h3 class="text-slate-800 font-semibold mb-1">Education</h3>
+              <p class="text-slate-600 text-sm">{personalData.education}</p>
             </div>
           </div>
 
@@ -146,8 +146,8 @@ import personalData from '../data/personal.json';
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-white font-semibold mb-1">Volunteer</h3>
-                  <p class="text-slate-400 text-sm">{personalData.volunteer}</p>
+                  <h3 class="text-slate-800 font-semibold mb-1">Volunteer</h3>
+                  <p class="text-slate-600 text-sm">{personalData.volunteer}</p>
                 </div>
               </div>
             )
@@ -173,12 +173,12 @@ import personalData from '../data/personal.json';
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-white font-semibold mb-1">Portfolio</h3>
+                  <h3 class="text-slate-800 font-semibold mb-1">Portfolio</h3>
                   <a
                     href={personalData.portfolioUrl}
                     target="_blank"
                     rel="noopener"
-                    class="text-slate-400 text-sm hover:text-accent transition-colors"
+                    class="text-slate-600 text-sm hover:text-accent transition-colors"
                   >
                     {personalData.portfolioUrl.replace(/^https?:\/\//, '')}
                   </a>

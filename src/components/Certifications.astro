@@ -55,7 +55,7 @@ function cardModClass(type: CertType) {
               <div class="space-y-3">
                 <div class="flex items-start justify-between gap-4">
                   <h3
-                    class={`text-base font-bold text-white transition-colors leading-snug ${titleHoverClass(type)}`}
+                    class={`text-base font-bold text-slate-800 transition-colors leading-snug ${titleHoverClass(type)}`}
                   >
                     {cert.name}
                   </h3>
@@ -72,7 +72,7 @@ function cardModClass(type: CertType) {
                   {type === 'professional-development' && <span class="issuer-tag">Course</span>}
                 </p>
 
-                <p class="text-slate-400 text-sm leading-relaxed">{cert.description}</p>
+                <p class="text-slate-600 text-sm leading-relaxed">{cert.description}</p>
 
                 <div class="flex items-center justify-between pt-2 border-t border-white/5">
                   <span class="text-xs text-slate-600 font-mono">{cert.date}</span>

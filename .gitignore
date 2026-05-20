@@ -2,6 +2,7 @@
 dist/
 .output/
 output/
+.astro/
 
 # secrets — never commit
 secrets/

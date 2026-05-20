@@ -42,10 +42,10 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                 </svg>
               </div>
               <div>
-                <h3 class="text-white font-semibold text-sm">Email</h3>
+                <h3 class="text-slate-800 font-semibold text-sm">Email</h3>
                 <a
                   href={`mailto:${personalData.email}`}
-                  class="text-slate-400 text-sm hover:text-accent transition-colors"
+                  class="text-slate-600 text-sm hover:text-accent transition-colors"
                 >
                   {personalData.email}
                 </a>
@@ -73,10 +73,10 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                     </svg>
                   </div>
                   <div>
-                    <h3 class="text-white font-semibold text-sm">Phone</h3>
+                    <h3 class="text-slate-800 font-semibold text-sm">Phone</h3>
                     <a
                       href={personalData.phoneTel}
-                      class="text-slate-400 text-sm hover:text-accent transition-colors"
+                      class="text-slate-600 text-sm hover:text-accent transition-colors"
                     >
                       {personalData.phone}
                     </a>
@@ -111,8 +111,8 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                 </svg>
               </div>
               <div>
-                <h3 class="text-white font-semibold text-sm">Location</h3>
-                <p class="text-slate-400 text-sm">{personalData.location}</p>
+                <h3 class="text-slate-800 font-semibold text-sm">Location</h3>
+                <p class="text-slate-600 text-sm">{personalData.location}</p>
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
           {
             socialLinks.length > 0 && (
               <div class="card">
-                <h3 class="text-white font-semibold text-sm mb-4">Where Else You Can Find Me:</h3>
+                <h3 class="text-slate-800 font-semibold text-sm mb-4">Where Else You Can Find Me:</h3>
                 <div class="flex flex-wrap gap-4">
                   {socialLinks.map((link) => (
                     <a
@@ -155,7 +155,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
               <div>
                 <label
                   for="name"
-                  class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                  class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2"
                   >Name</label
                 >
                 <input
@@ -164,14 +164,14 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                   name="name"
                   autocomplete="name"
                   required
-                  class="w-full bg-slate-900/60 border border-slate-700/60 rounded-lg px-4 py-3 text-white text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors placeholder:text-slate-600"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors placeholder:text-slate-400"
                   placeholder="My name…"
                 />
               </div>
               <div>
                 <label
                   for="email"
-                  class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                  class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2"
                   >Email</label
                 >
                 <input
@@ -182,7 +182,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                   inputmode="email"
                   spellcheck="false"
                   required
-                  class="w-full bg-slate-900/60 border border-slate-700/60 rounded-lg px-4 py-3 text-white text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors placeholder:text-slate-600"
+                  class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors placeholder:text-slate-400"
                   placeholder="you@example.com"
                 />
               </div>
@@ -191,7 +191,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
             <div>
               <label
                 for="subject"
-                class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2"
                 >Subject</label
               >
               <input
@@ -200,7 +200,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                 name="subject"
                 autocomplete="off"
                 required
-                class="w-full bg-slate-900/60 border border-slate-700/60 rounded-lg px-4 py-3 text-white text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors placeholder:text-slate-600"
+                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors placeholder:text-slate-400"
                 placeholder="Let us know…"
               />
             </div>
@@ -208,7 +208,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
             <div>
               <label
                 for="message"
-                class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2"
+                class="block text-xs font-semibold text-slate-600 uppercase tracking-wider mb-2"
                 >Message</label
               >
               <textarea
@@ -216,7 +216,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                 name="message"
                 rows="5"
                 required
-                class="w-full bg-slate-900/60 border border-slate-700/60 rounded-lg px-4 py-3 text-white text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors resize-none placeholder:text-slate-600"
+                class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 text-sm focus:outline-hidden focus-visible:border-accent focus-visible:ring-1 focus-visible:ring-accent/50 transition-colors resize-none placeholder:text-slate-400"
                 placeholder="What would you like to tell us?"></textarea>
             </div>
 

@@ -60,7 +60,7 @@ const heroParts = personalData.heroRole.split(' & ');
             <span class="gradient-text">{personalData.name}</span>
           </h1>
 
-          <h2 class="text-slate-400 font-light mt-3" style="font-size: clamp(1rem, 2.2vw, 1.5rem);">
+          <h2 class="text-slate-600 font-light mt-3" style="font-size: clamp(1rem, 2.2vw, 1.5rem);">
             {
               heroParts.length > 1 ? (
                 <>
@@ -75,7 +75,7 @@ const heroParts = personalData.heroRole.split(' & ');
         </div>
 
         <p
-          class="text-base text-slate-400 max-w-lg leading-relaxed reveal text-backdrop"
+          class="text-base text-slate-600 max-w-lg leading-relaxed reveal text-backdrop"
           style="transition-delay: 0.2s;"
         >
           {personalData.bio}
@@ -527,12 +527,13 @@ const heroParts = personalData.heroRole.split(' & ');
   .text-backdrop {
     position: relative;
     z-index: 2;
-    background: rgba(2, 6, 23, 0.72);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     border-radius: 0.6rem;
     padding: 0.75rem 1rem;
-    border-left: 2px solid rgba(96, 165, 250, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-left: 3px solid var(--accent);
   }
 
   .project-frame-outer {

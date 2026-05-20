@@ -54,27 +54,29 @@ const heroParts = personalData.heroRole.split(' & ');
           Welcome to my portfolio
         </p>
 
-        <div class="reveal text-backdrop profile-card relative" style="transition-delay: 0.1s;">
-          <h1 class="font-bold leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
-            Hi, I'm<br />
-            <span class="gradient-text">{personalData.name}</span>
-          </h1>
+        <div class="reveal text-backdrop profile-card flex flex-col lg:flex-row items-center gap-8 relative" style="transition-delay: 0.1s;">
+          <div class="flex-1 min-w-0">
+            <h1 class="font-bold leading-tight" style="font-size: clamp(2.5rem, 5vw, 4.5rem);">
+              Hi, I'm<br />
+              <span class="gradient-text">{personalData.name}</span>
+            </h1>
 
-          <h2 class="text-slate-600 font-light mt-3" style="font-size: clamp(1rem, 2.2vw, 1.5rem);">
-            {
-              heroParts.length > 1 ? (
-                <>
-                  {heroParts[0]} <span class="text-highlight">&</span>{' '}
-                  {heroParts.slice(1).join(' & ')}
-                </>
-              ) : (
-                heroParts[0]
-              )
-            }
-          </h2>
+            <h2 class="text-slate-600 font-light mt-3" style="font-size: clamp(1rem, 2.2vw, 1.5rem);">
+              {
+                heroParts.length > 1 ? (
+                  <>
+                    {heroParts[0]} <span class="text-highlight">&</span>{' '}
+                    {heroParts.slice(1).join(' & ')}
+                  </>
+                ) : (
+                  heroParts[0]
+                )
+              }
+            </h2>
+          </div>
 
           <div
-            class="portrait-peek-wrapper reveal"
+            class="portrait-peek-wrapper flex-shrink-0 reveal"
             aria-hidden="true"
             style="transition-delay: 0.65s;"
           >
@@ -83,8 +85,8 @@ const heroParts = personalData.heroRole.split(' & ');
               alt={personalData.photoAlt ?? ''}
               class="portrait-peek-img"
               loading="lazy"
-              width="160"
-              height="160"
+              width="280"
+              height="280"
             />
           </div>
         </div>
@@ -754,28 +756,21 @@ const heroParts = personalData.heroRole.split(' & ');
 
   @media (min-width: 1024px) {
     .profile-card {
-      padding-right: 13rem;
+      padding: 2rem 2.5rem;
     }
   }
 
   .portrait-peek-wrapper {
-    position: absolute;
+    position: relative;
     z-index: 10;
-  }
-
-  @media (min-width: 1024px) {
-    .portrait-peek-wrapper {
-      top: 50%;
-      right: 1.5rem;
-      transform: translateY(-50%);
-    }
   }
 
   .portrait-peek-img {
     display: block;
-    width: 160px;
-    height: 160px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
+    object-position: center 12%;
     border-radius: 50%;
     border: 4px solid var(--bg-card);
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.15);
@@ -793,38 +788,18 @@ const heroParts = personalData.heroRole.split(' & ');
     }
   }
 
+  @media (max-width: 1023px) {
+    .portrait-peek-img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
   @media (max-width: 480px) {
-    .portrait-peek-wrapper {
-      top: -2rem;
-      right: -0.5rem;
-    }
     .portrait-peek-img {
-      width: 95px;
-      height: 95px;
+      width: 140px;
+      height: 140px;
       border-width: 3px;
-    }
-  }
-
-  @media (min-width: 481px) and (max-width: 767px) {
-    .portrait-peek-wrapper {
-      top: -2rem;
-      right: -1rem;
-    }
-    .portrait-peek-img {
-      width: 110px;
-      height: 110px;
-      border-width: 3px;
-    }
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    .portrait-peek-wrapper {
-      top: -2.5rem;
-      right: -1.5rem;
-    }
-    .portrait-peek-img {
-      width: 130px;
-      height: 130px;
     }
   }
 

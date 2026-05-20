@@ -12,6 +12,7 @@
     "title": "Web Stack",
     "skills": [
       { "name": "LAMP Stack", "logo": "/images/icons/devicons/php-original.svg" },
+      { "name": "LEMP Stack", "logo": "/images/icons/devicons/nginx-original.svg" },
       { "name": "HTML5/CSS3", "logo": "/images/icons/devicons/html5-original.svg" },
       { "name": "WordPress", "logo": "/images/icons/devicons/wordpress-original.svg" },
       { "name": "Magento", "logo": "/images/icons/devicons/magento-original.svg" }
@@ -20,6 +21,10 @@
   {
     "title": "Infrastructure & Services",
     "skills": [
+      { "name": "AWS", "logo": "/images/icons/devicons/amazonwebservices-original.svg" },
+      { "name": "GCP", "logo": "/images/icons/devicons/googlecloud-original.svg" },
+      { "name": "Azure", "logo": "/images/icons/devicons/azure-original.svg" },
+      { "name": "Cloudflare", "logo": "/images/icons/devicons/cloudflare-original.svg" },
       { "name": "Hosting / Cpanel", "logo": "/images/icons/devicons/servers-original.svg" },
       { "name": "Domains / DNS", "logo": "/images/icons/devicons/network-original.svg" },
       { "name": "OnPage SEO", "logo": "/images/icons/devicons/google-original.svg" },

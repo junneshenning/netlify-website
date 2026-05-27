@@ -2,6 +2,7 @@
 import personalData from '../data/personal.json';
 import menu from '../data/menu.json';
 import siteData from '../data/site.json';
+import { withBase } from '../lib/assetPath';
 
 const { sections } = menu;
 
@@ -23,8 +24,14 @@ const external = siteData.navExternal
 <header class="fixed top-0 left-0 right-0 z-50 glass-nav">
   <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16">
-      <a href="#home" class="text-lg font-bold gradient-text tracking-tight shrink-0">
-        {personalData.name}
+      <a href="#home" class="flex items-center shrink-0">
+        <img
+          src={withBase('/images/logo.png')}
+          alt={personalData.name}
+          class="header-logo object-contain"
+          width="180"
+          height="36"
+        />
       </a>
 
       <div class="hidden lg:flex items-center gap-6">
@@ -750,6 +757,18 @@ const external = siteData.navExternal
     header .container .gap-6 {
       gap: 1rem !important;
     }
+  }
+
+  .header-logo {
+    height: 2.25rem;
+    width: auto;
+    display: block;
+    transition: filter 0.3s ease;
+    filter: invert(1) brightness(1.8);
+  }
+
+  :global([data-theme='light']) .header-logo {
+    filter: none;
   }
 </style>
 

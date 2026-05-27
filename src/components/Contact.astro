@@ -141,16 +141,7 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
 
         <div class="card reveal" style="transition-delay: 0.2s;">
           <form id="contact-form" class="space-y-4" novalidate>
-            <input type="hidden" name="access_key" value={siteData.web3formsKey} />
-            <!-- Honeypot: hidden from users but bots fill it in.
-                 Web3Forms rejects any submission where this field is checked. -->
-            <input
-              type="checkbox"
-              name="botcheck"
-              class="hidden"
-              style="display:none;"
-              aria-hidden="true"
-            />
+            <!-- Form sends securely via Netlify serverless function -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label
@@ -220,6 +211,19 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
                 placeholder="What would you like to tell us?"></textarea>
             </div>
 
+            {
+              import.meta.env.PUBLIC_TURNSTILE_SITE_KEY && (
+                <div class="flex justify-center my-4">
+                  <div
+                    class="cf-turnstile"
+                    data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}
+                    data-theme="auto"
+                  ></div>
+                </div>
+                <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+              )
+            }
+
             <div aria-live="polite" aria-atomic="true" id="form-status" class="sr-only"></div>
             <button type="submit" class="btn-primary w-full flex items-center justify-center gap-2">
               <svg
@@ -282,20 +286,43 @@ const socialLinks = getSocialLinks(personalData as unknown as Record<string, str
     }
     setStatus('', false);
 
+    const formData = new FormData(form!);
+    const turnstileToken = (form!.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement | null)?.value || '';
+
+    const payload = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+      turnstileToken
+    };
+
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
-        body: new FormData(form!),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
       const data = (await res.json()) as { success?: boolean; message?: string };
-      if (res.ok) {
+      if (res.ok && data.success) {
         setStatus("Message sent! I'll be in touch soon.", false);
         form!.reset();
+        if ((window as any).turnstile) {
+          (window as any).turnstile.reset();
+        }
       } else {
         setStatus(data.message ?? 'Something went wrong. Please try again.', true);
+        if ((window as any).turnstile) {
+          (window as any).turnstile.reset();
+        }
       }
     } catch {
       setStatus('Network error. Check your connection and try again.', true);
+      if ((window as any).turnstile) {
+        (window as any).turnstile.reset();
+      }
     } finally {
       if (button) {
         button.disabled = false;

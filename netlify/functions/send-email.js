@@ -1,6 +1,6 @@
 /**
  * Netlify Serverless Function to handle secure contact form submission,
- * verify Cloudflare Turnstile CAPTCHA, and send email via Mailtrap API.
+ * verify Cloudflare Turnstile CAPTCHA, and send email via Resend API.
  */
 export async function handler(event, context) {
   // Only allow POST requests
@@ -69,13 +69,13 @@ export async function handler(event, context) {
       }
     }
 
-    // 2. Prepare Mailtrap Credentials
-    const mailtrapToken = process.env.MAILTRAP_API_TOKEN;
-    const senderEmail = process.env.MAILTRAP_SENDER_EMAIL;
-    const recipientEmail = process.env.MAILTRAP_RECIPIENT_EMAIL;
+    // 2. Prepare Resend Credentials
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const senderEmail = process.env.RESEND_SENDER_EMAIL || 'onboarding@resend.dev';
+    const recipientEmail = process.env.RESEND_RECIPIENT_EMAIL || 'junnesdaniel@gmail.com';
 
-    if (!mailtrapToken || !senderEmail || !recipientEmail) {
-      console.error('Missing Mailtrap configuration environment variables');
+    if (!resendApiKey) {
+      console.error('Missing Resend configuration environment variables');
       return {
         statusCode: 500,
         headers: { 'Content-Type': 'application/json' },
@@ -83,28 +83,12 @@ export async function handler(event, context) {
       };
     }
 
-    // 3. Determine Mailtrap Endpoint (Sandbox vs Production Sending)
-    const sandboxInboxId = process.env.MAILTRAP_INBOX_ID;
-    let mailtrapUrl = 'https://send.api.mailtrap.io/api/send';
-    if (sandboxInboxId) {
-      mailtrapUrl = `https://sandbox.api.mailtrap.io/api/send/${sandboxInboxId}`;
-    }
-
-    // 4. Send Email via Mailtrap API
+    // 3. Send Email via Resend API
+    const resendUrl = 'https://api.resend.com/emails';
     const emailData = {
-      from: {
-        email: senderEmail,
-        name: 'Portfolio Contact Form',
-      },
-      to: [
-        {
-          email: recipientEmail,
-        },
-      ],
-      reply_to: {
-        email: email,
-        name: name,
-      },
+      from: `Portfolio Contact Form <${senderEmail}>`,
+      to: [recipientEmail],
+      reply_to: `${name} <${email}>`,
       subject: `[Contact Form] ${subject}`,
       text: `You received a new message from your portfolio website:\n\n` +
             `----------------------------------------\n` +
@@ -113,32 +97,31 @@ export async function handler(event, context) {
             `Subject: ${subject}\n` +
             `----------------------------------------\n\n` +
             `Message:\n${message}\n`,
-      category: 'Contact Form',
     };
 
-    const mailtrapRes = await fetch(mailtrapUrl, {
+    const resendRes = await fetch(resendUrl, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${mailtrapToken}`,
+        'Authorization': `Bearer ${resendApiKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(emailData),
     });
 
-    const responseText = await mailtrapRes.text();
-    let mailtrapData = {};
+    const responseText = await resendRes.text();
+    let resendData = {};
     try {
-      mailtrapData = JSON.parse(responseText);
+      resendData = JSON.parse(responseText);
     } catch (e) {
-      mailtrapData = { raw: responseText };
+      resendData = { raw: responseText };
     }
 
-    if (!mailtrapRes.ok) {
-      console.error('Mailtrap sending failed:', mailtrapRes.status, mailtrapData);
+    if (!resendRes.ok) {
+      console.error('Resend sending failed:', resendRes.status, resendData);
       return {
         statusCode: 502,
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ success: false, message: 'Failed to send email through Mailtrap' }),
+        body: JSON.stringify({ success: false, message: 'Failed to send email through Resend' }),
       };
     }
 

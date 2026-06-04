@@ -1,12 +1,49 @@
 [
   {
+    "title": "Cloud Architect & IT Consultant",
+    "featured": true,
+    "resume": true,
+    "company": "AcidLabs (formerly Linets Chile SpA)",
+    "category": "Experience",
+    "description": "Cloud architecture design, infrastructure management, and IT consulting. Led migration and integration efforts during the Linets Chile SpA merger into AcidLabs in May 2023. Jun 2022 - Present.",
+    "tags": [
+      "Cloud Architecture",
+      "IT Consulting",
+      "Infrastructure",
+      "Migrations"
+    ],
+    "icon": "briefcase",
+    "link": ""
+  },
+  {
+    "title": "Cloud Architect & Infrastructure Consultant",
+    "featured": true,
+    "resume": true,
+    "company": "Droguería Nena, C.A.",
+    "category": "Experience",
+    "description": "Cloud architecture design and infrastructure configuration for the drugstore website. Ongoing maintenance, security hardening, and N8N workflow automation. Jun 2025 - Present.",
+    "tags": [
+      "Cloud Architecture",
+      "Security",
+      "Automation",
+      "N8N"
+    ],
+    "icon": "server",
+    "link": ""
+  },
+  {
     "title": "Support Manager & Project Programmer",
     "featured": true,
     "resume": true,
     "company": "Logoscorp, C.A.",
     "category": "Experience",
-    "description": "Managing support and project programming. Sep 2016 - Present.",
-    "tags": ["Management", "Programming", "Support"],
+    "description": "Managing support and project programming teams. Led cloud infrastructure deployment and website architecture design. Sep 2016 - Jun 2022.",
+    "tags": [
+      "Management",
+      "Programming",
+      "Support",
+      "Cloud"
+    ],
     "icon": "briefcase",
     "link": ""
   },
@@ -17,7 +54,10 @@
     "company": "Soporte S.P.I., C.A.",
     "category": "Experience",
     "description": "Managing IT operations and support teams. Feb 2009 - Aug 2016.",
-    "tags": ["IT Management", "Support"],
+    "tags": [
+      "IT Management",
+      "Support"
+    ],
     "icon": "server",
     "link": ""
   },
@@ -27,7 +67,9 @@
     "company": "Toyoavila, C.A.",
     "category": "Experience",
     "description": "Analyzing and maintaining systems. Sep 2006 - Feb 2009.",
-    "tags": ["Systems Analysis"],
+    "tags": [
+      "Systems Analysis"
+    ],
     "icon": "desktop",
     "link": ""
   }

@@ -14,7 +14,16 @@
     "date": "",
     "status": "Earned",
     "type": "certification",
-    "description": "Information Technology Infrastructure Library v3 certification.",
+    "description": "Information Technology Infrastructure Library v3 certification covering IT service management best practices, including service strategy, design, transition, operation, and continual service improvement.",
+    "credentialUrl": "/documents/ITILv3_Exim_Certificate.jpg"
+  },
+  {
+    "name": "AWS Solutions Architect Associate",
+    "issuer": "Amazon Web Services",
+    "date": "",
+    "status": "In Progress",
+    "type": "certification",
+    "description": "Validates the ability to design and deploy scalable, highly available, and fault-tolerant systems on AWS. Covers compute, storage, networking, databases, security, and cost optimization following the AWS Well-Architected Framework.",
     "credentialUrl": ""
   }
 ]

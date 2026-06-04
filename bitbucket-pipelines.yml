@@ -3,13 +3,14 @@
 # Repository: junneshenning1/junneshenning1.bitbucket.io
 # Pages URL:  https://junneshenning1.bitbucket.io
 #
-# Since the repo name is <workspace>.bitbucket.io, Bitbucket automatically
-# serves it from the root domain — no subdirectory prefix needed (BASE_PATH=/).
+# Since the repo name is <workspace>.bitbucket.io, Bitbucket serves
+# static content directly from the root of the main branch.
 #
 # How it works:
 #   1. Push to main → pipeline triggers automatically
 #   2. npm install + npm run build produce dist/
-#   3. The atlassian/bitbucket-pages-deploy pipe uploads dist/ to Bitbucket Pages
+#   3. Copy dist/ contents to repo root, commit, and push back
+#      → Bitbucket serves the static files at https://junneshenning1.bitbucket.io
 #
 # Required setup in Bitbucket (one-time):
 #   Repository Settings → Pipelines → Settings:
@@ -29,8 +30,6 @@ pipelines:
           deployment: production
           script:
             # Auto-detect the Pages URL from Bitbucket workspace/repo metadata.
-            # For a <workspace>.bitbucket.io repo, Bitbucket serves from root.
-            # For other repos, it serves from /<repo-name>/.
             - |
               WORKSPACE=$(echo "$BITBUCKET_WORKSPACE" | tr '[:upper:]' '[:lower:]')
               REPO=$(echo "$BITBUCKET_REPO_SLUG" | tr '[:upper:]' '[:lower:]')
@@ -49,10 +48,28 @@ pipelines:
                 fi
               fi
             - echo "SITE_URL=$SITE_URL  BASE_PATH=$BASE_PATH"
+
+            # Install dependencies and build the static site
             - npm install
             - npm run build
-            - pipe: atlassian/bitbucket-pages-deploy:1.0.0
-              variables:
-                FOLDER: "dist"
-          artifacts:
-            - dist/**
+
+            # Deploy: copy dist/ contents to repo root and push.
+            # Bitbucket serves *.bitbucket.io repos from the root of the main branch.
+            - |
+              git config user.email "pipeline@bitbucket.org"
+              git config user.name "Bitbucket Pipeline"
+              # Copy built files to a temp location, clear repo root, copy back
+              TEMP_DIR=$(mktemp -d)
+              # Preserve the .git directory and bitbucket-pipelines.yml
+              cp -r dist/* "$TEMP_DIR"
+              cp -r dist/.??* "$TEMP_DIR" 2>/dev/null || true
+              # Remove all tracked files from the repo root (keep .git and pipelines config)
+              git rm -r --cached . 2>/dev/null || true
+              find . -maxdepth 1 -not -name '.git' -not -name 'bitbucket-pipelines.yml' -not -name '.' -not -name '..' -exec rm -rf {} \;
+              # Copy built files back to repo root
+              cp -r "$TEMP_DIR"/* .
+              cp -r "$TEMP_DIR"/.??* . 2>/dev/null || true
+              # Stage, commit, and push
+              git add -A
+              git commit -m "Deploy: $(date -u +'%Y-%m-%d %H:%M:%S UTC') [skip ci]" || echo "Nothing to commit"
+              git push origin main

@@ -148,6 +148,90 @@ import servicesData from '../data/expertise.json';
                     />
                   </svg>
                 )}
+                {svc.key === 'linux-support' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svc-svg">
+                    <defs>
+                      <linearGradient id="svc-g5" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="40%" stop-color="#818cf8" />
+                        <stop offset="60%" stop-color="#4f46e5" />
+                        <stop offset="100%" stop-color="#6366f1" />
+                      </linearGradient>
+                    </defs>
+                    <!-- Monitor / Terminal -->
+                    <rect fill="url(#svc-g5)" x="17" y="28" width="66" height="48" rx="5" />
+                    <rect fill="var(--bg-card)" x="22" y="33" width="56" height="36" rx="3" />
+                    <!-- Title bar dots -->
+                    <circle fill="url(#svc-g5)" cx="30" cy="39" r="2" />
+                    <circle fill="url(#svc-g5)" cx="37" cy="39" r="2" />
+                    <circle fill="url(#svc-g5)" cx="44" cy="39" r="2" />
+                    <!-- >_ prompt -->
+                    <path fill="none" stroke="url(#svc-g5)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M28 54l4-4-4-4" />
+                    <line x1="36" y1="50" x2="48" y2="50" stroke="url(#svc-g5)" stroke-width="3" stroke-linecap="round" />
+                    <!-- Monitor stand -->
+                    <path fill="url(#svc-g5)" d="M46 76h8l2 6H44z" />
+                  </svg>
+                )}
+                {svc.key === 'it-consulting' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svc-svg">
+                    <defs>
+                      <linearGradient id="svc-g6" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="40%" stop-color="#818cf8" />
+                        <stop offset="60%" stop-color="#4f46e5" />
+                        <stop offset="100%" stop-color="#6366f1" />
+                      </linearGradient>
+                    </defs>
+                    <!-- Network topology: 3 nodes connected -->
+                    <circle fill="url(#svc-g6)" cx="50" cy="22" r="9" />
+                    <circle fill="url(#svc-g6)" cx="24" cy="62" r="9" />
+                    <circle fill="url(#svc-g6)" cx="76" cy="62" r="9" />
+                    <line x1="43" y1="28" x2="29" y2="57" stroke="url(#svc-g6)" stroke-width="3" stroke-linecap="round" />
+                    <line x1="57" y1="28" x2="71" y2="57" stroke="url(#svc-g6)" stroke-width="3" stroke-linecap="round" />
+                    <line x1="32" y1="62" x2="68" y2="62" stroke="url(#svc-g6)" stroke-width="3" stroke-linecap="round" />
+                    <!-- Inner node highlights -->
+                    <circle fill="var(--bg-card)" cx="50" cy="22" r="4" />
+                    <circle fill="var(--bg-card)" cx="24" cy="62" r="4" />
+                    <circle fill="var(--bg-card)" cx="76" cy="62" r="4" />
+                  </svg>
+                )}
+                {svc.key === 'bash-scripting' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svc-svg">
+                    <defs>
+                      <linearGradient id="svc-g7" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="40%" stop-color="#818cf8" />
+                        <stop offset="60%" stop-color="#4f46e5" />
+                        <stop offset="100%" stop-color="#6366f1" />
+                      </linearGradient>
+                    </defs>
+                    <!-- Code angle brackets </>
+                    <path fill="none" stroke="url(#svc-g7)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M38 32L22 50l16 18" />
+                    <path fill="none" stroke="url(#svc-g7)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M62 32l16 18-16 18" />
+                    <!-- Slash -->
+                    <line x1="43" y1="35" x2="57" y2="65" stroke="url(#svc-g7)" stroke-width="5" stroke-linecap="round" />
+                    <!-- Small terminal underline -->
+                    <rect fill="url(#svc-g7)" x="32" y="72" width="36" height="4" rx="2" />
+                  </svg>
+                )}
+                {svc.key === 'security' && (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="svc-svg">
+                    <defs>
+                      <linearGradient id="svc-g8" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#6366f1" />
+                        <stop offset="40%" stop-color="#818cf8" />
+                        <stop offset="60%" stop-color="#4f46e5" />
+                        <stop offset="100%" stop-color="#6366f1" />
+                      </linearGradient>
+                    </defs>
+                    <!-- Shield outline -->
+                    <path fill="url(#svc-g8)" d="M50 14L22 32v24c0 15.5 10.5 27 28 30 17.5-3 28-14.5 28-30V32z" />
+                    <!-- Inner shield -->
+                    <path fill="var(--bg-card)" d="M50 22L30 36v20c0 12.5 8.5 22 20 24.5 11.5-2.5 20-12 20-24.5V36z" />
+                    <!-- Checkmark -->
+                    <path fill="none" stroke="url(#svc-g8)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" d="M40 50l7 7 14-14" />
+                  </svg>
+                )}
               </div>
 
               <div class="svc-content">

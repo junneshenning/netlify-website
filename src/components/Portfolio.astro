@@ -1,6 +1,16 @@
 ---
-import portfolioData from '../data/portfolio.json';
+import rawPortfolioData from '../data/portfolio.json';
 import { withBase } from '../lib/assetPath';
+
+interface PortfolioItem {
+  title: string;
+  category: string;
+  description: string;
+  images: string[];
+  slides?: string[];
+}
+
+const portfolioData = rawPortfolioData as PortfolioItem[];
 
 const categories = ['All', ...Array.from(new Set(portfolioData.map((p) => p.category)))];
 
@@ -13,6 +23,8 @@ const categoryColors: Record<string, string> = {
   Retail: '#ec4899',
   'Non-Profits': '#7c3aed',
   SEO: '#14b8a6',
+  Healthcare: '#06b6d4',
+  'Real Estate': '#84cc16',
 };
 
 const portfolioDataForClient = portfolioData.map((p) => ({

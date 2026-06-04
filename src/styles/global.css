@@ -28,8 +28,8 @@
     --border-hover: #0ea5e9;
     --accent: #0284c7;
     --accent-blue: #2563eb;
-    --neon: #0ea5e9;
-    --neon-glow: rgba(14, 165, 233, 0.1);
+    --neon: #7dd3fc;
+    --neon-glow: rgba(125, 211, 252, 0.18);
     --scrollbar-track: #f1f5f9;
     --scrollbar-thumb: #cbd5e1;
     --scrollbar-thumb-hover: #94a3b8;
@@ -103,6 +103,7 @@
     text-decoration: none;
     transition: top 0.15s ease;
   }
+
   .skip-link:focus-visible {
     top: 0;
     outline: 2px solid #fff;
@@ -137,14 +138,17 @@
   ::-webkit-scrollbar {
     width: 10px;
   }
+
   ::-webkit-scrollbar-track {
     background: var(--scrollbar-track);
     border-radius: 5px;
   }
+
   ::-webkit-scrollbar-thumb {
     background: var(--scrollbar-thumb);
     border-radius: 5px;
   }
+
   ::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-thumb-hover);
   }
@@ -201,6 +205,7 @@
       box-shadow 0.3s ease,
       transform 0.3s ease;
   }
+
   .btn-primary:focus-visible {
     outline: 2px solid #fff;
     outline-offset: 3px;
@@ -224,6 +229,7 @@
       background 0.3s ease,
       transform 0.3s ease;
   }
+
   .btn-secondary:focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
@@ -343,22 +349,22 @@
 
   .gradient-divider {
     height: 1px;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(99, 102, 241, 0.5),
-      rgba(14, 165, 233, 0.5),
-      transparent
-    );
+    background: linear-gradient(90deg,
+        transparent,
+        rgba(99, 102, 241, 0.5),
+        rgba(14, 165, 233, 0.5),
+        transparent);
     border: none;
   }
 
   .text-body {
     color: var(--text);
   }
+
   .text-muted {
     color: var(--text-muted);
   }
+
   .text-dimmed {
     color: var(--text-dim);
   }
@@ -368,16 +374,19 @@
   0% {
     background-position: 0% center;
   }
+
   100% {
     background-position: 200% center;
   }
 }
 
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -387,6 +396,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -404,11 +414,13 @@ body.page-hidden * {
 }
 
 @media (max-width: 1023px) {
+
   .py-24,
   .py-20 {
     padding-top: 3rem;
     padding-bottom: 3rem;
   }
+
   .hero-badge-icon,
   .pf-badge,
   .pf-counter {

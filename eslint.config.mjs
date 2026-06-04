@@ -20,7 +20,7 @@ export default [
 
   // Global ignores
   {
-    ignores: ['dist/', 'output/', 'node_modules/', '.astro/', 'public/', 'scripts/'],
+    ignores: ['dist/', 'output/', 'node_modules/', '.astro/', '.netlify/', 'public/', 'scripts/'],
   },
 
   // Project-wide rule overrides

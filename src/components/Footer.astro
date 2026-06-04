@@ -17,17 +17,11 @@ const { footerAttribution } = siteData;
 <footer
   id="site-footer"
   style="position: relative; background: var(--footer-bg); border-top: 1px solid var(--footer-border);"
-  data-base={base}
-  data-gif-count={siteData.retroTvCount}
 >
   <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-14">
     <div class="footer-grid">
       <div class="footer-left">
-        <div class="footer-square" id="footer-square">
-          <div class="footer-glitch" data-text={siteData.shortName}>{siteData.shortName}</div>
-        </div>
-
-        <div class="mt-4">
+        <div class="mt-0">
           <p class="text-lg font-bold gradient-text">{personalData.name}</p>
           <p class="text-slate-500 text-xs mt-1 leading-relaxed max-w-[220px]">
             {siteData.tagline}
@@ -71,7 +65,7 @@ const { footerAttribution } = siteData;
     </div>
     <div class="footer-divider my-8"></div>
 
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="flex flex-col items-center gap-4 text-center">
       <p class="text-slate-600 text-sm">
         © {currentYear}
         {personalData.name}
@@ -119,6 +113,13 @@ const { footerAttribution } = siteData;
   </div>
 </footer>
 
+<style is:global>
+  .footer-left .gradient-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+  }
+</style>
+
 <style>
   .footer-grid {
     display: grid;
@@ -154,198 +155,6 @@ const { footerAttribution } = siteData;
     }
     .footer-right {
       text-align: left;
-    }
-  }
-
-  .footer-square {
-    width: 170px;
-    aspect-ratio: 2/1;
-    border: 3px solid rgba(255, 255, 255, 0.35);
-    background: var(--bg);
-    background-size: 130% auto;
-    background-position: top left;
-    filter: grayscale(55%) brightness(88%);
-    padding: 1.1em 1em 0.5em 1em;
-    cursor: default;
-    transition:
-      filter 0.4s ease,
-      border-color 0.4s ease;
-  }
-  .footer-square:hover {
-    filter: grayscale(20%) brightness(100%);
-    border-color: rgba(99, 102, 241, 0.7);
-  }
-
-  .footer-glitch {
-    color: white;
-    left: -1.925rem;
-    top: 1rem;
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 3px;
-    position: relative;
-    display: block;
-    line-height: 1;
-  }
-
-  /* content: attr(data-text) clones the visible text into two pseudo-elements.
-     clip-path is then animated frame-by-frame to create the scanline glitch effect. */
-  .footer-glitch:before,
-  .footer-glitch:after {
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    color: white;
-    background: var(--bg);
-    overflow: hidden;
-    clip-path: inset(0 0 100% 0);
-  }
-  .footer-glitch:before {
-    left: -2px;
-    text-shadow: 1px 0 blue;
-    animation: fg-noise-2 3s infinite linear alternate-reverse;
-    animation-play-state: paused;
-  }
-  .footer-glitch:after {
-    left: 2px;
-    text-shadow: -1px 0 red;
-    animation: fg-noise 2s infinite linear alternate-reverse;
-    animation-play-state: paused;
-  }
-  .footer-glitch:hover:before,
-  .footer-glitch:hover:after {
-    animation-play-state: running;
-  }
-
-  @keyframes fg-noise {
-    0% {
-      clip-path: inset(40px 0 0px 0);
-    }
-    5% {
-      clip-path: inset(13px 0 92px 0);
-    }
-    10% {
-      clip-path: inset(63px 0 3px 0);
-    }
-    15% {
-      clip-path: inset(35px 0 1px 0);
-    }
-    20% {
-      clip-path: inset(50px 0 63px 0);
-    }
-    25% {
-      clip-path: inset(93px 0 95px 0);
-    }
-    30% {
-      clip-path: inset(1px 0 71px 0);
-    }
-    35% {
-      clip-path: inset(71px 0 11px 0);
-    }
-    40% {
-      clip-path: inset(92px 0 67px 0);
-    }
-    45% {
-      clip-path: inset(1px 0 50px 0);
-    }
-    50% {
-      clip-path: inset(55px 0 37px 0);
-    }
-    55% {
-      clip-path: inset(62px 0 24px 0);
-    }
-    60% {
-      clip-path: inset(84px 0 94px 0);
-    }
-    65% {
-      clip-path: inset(20px 0 42px 0);
-    }
-    70% {
-      clip-path: inset(26px 0 56px 0);
-    }
-    75% {
-      clip-path: inset(57px 0 23px 0);
-    }
-    80% {
-      clip-path: inset(12px 0 81px 0);
-    }
-    85% {
-      clip-path: inset(60px 0 66px 0);
-    }
-    90% {
-      clip-path: inset(69px 0 63px 0);
-    }
-    95% {
-      clip-path: inset(69px 0 64px 0);
-    }
-    100% {
-      clip-path: inset(91px 0 0px 0);
-    }
-  }
-
-  @keyframes fg-noise-2 {
-    0% {
-      clip-path: inset(54px 0 87px 0);
-    }
-    5% {
-      clip-path: inset(52px 0 5px 0);
-    }
-    10% {
-      clip-path: inset(64px 0 69px 0);
-    }
-    15% {
-      clip-path: inset(58px 0 27px 0);
-    }
-    20% {
-      clip-path: inset(54px 0 60px 0);
-    }
-    25% {
-      clip-path: inset(22px 0 94px 0);
-    }
-    30% {
-      clip-path: inset(29px 0 21px 0);
-    }
-    35% {
-      clip-path: inset(1px 0 0px 0);
-    }
-    40% {
-      clip-path: inset(75px 0 95px 0);
-    }
-    45% {
-      clip-path: inset(27px 0 9px 0);
-    }
-    50% {
-      clip-path: inset(1px 0 94px 0);
-    }
-    55% {
-      clip-path: inset(77px 0 31px 0);
-    }
-    60% {
-      clip-path: inset(65px 0 76px 0);
-    }
-    65% {
-      clip-path: inset(75px 0 9px 0);
-    }
-    70% {
-      clip-path: inset(56px 0 36px 0);
-    }
-    75% {
-      clip-path: inset(43px 0 29px 0);
-    }
-    80% {
-      clip-path: inset(26px 0 28px 0);
-    }
-    85% {
-      clip-path: inset(94px 0 91px 0);
-    }
-    90% {
-      clip-path: inset(66px 0 63px 0);
-    }
-    95% {
-      clip-path: inset(86px 0 11px 0);
-    }
-    100% {
-      clip-path: inset(46px 0 8px 0);
     }
   }
 
@@ -431,20 +240,3 @@ const { footerAttribution } = siteData;
   }
 </style>
 
-<script>
-  // base and gifCount are read from data attributes rather than hardcoded so this script
-  // works correctly regardless of the site's BASE_PATH deployment sub-directory.
-  const footer = document.getElementById('site-footer') as HTMLElement | null;
-  const base = footer?.dataset.base ?? '/';
-  const count = parseInt(footer?.dataset.gifCount ?? '21', 10);
-  const gifs = Array.from(
-    { length: count },
-    (_, i) => `${base}images/retro-tv/bgtv_(${i + 1}).gif`
-  );
-  // Pick a different retro TV gif on each page load.
-  const pick = gifs[Math.floor(Math.random() * gifs.length)];
-  const sq = document.getElementById('footer-square') as HTMLElement | null;
-  if (sq) {
-    sq.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)), url('${pick}')`;
-  }
-</script>

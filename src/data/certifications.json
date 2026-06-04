@@ -1,5 +1,14 @@
 [
   {
+    "name": "Google Workspace Administrator Professional Certificate",
+    "issuer": "Google / Coursera",
+    "date": "2024-01-26",
+    "status": "Earned",
+    "type": "certification",
+    "description": "Professional certification covering Google Workspace administration, user and group management, security configuration, data governance, email compliance, and service management for Google's productivity and collaboration suite.",
+    "credentialUrl": "/documents/Google_Workspace_Administrator_Professional_Certificate.pdf"
+  },
+  {
     "name": "ITILv3 Foundation",
     "issuer": "AXELOS",
     "date": "",

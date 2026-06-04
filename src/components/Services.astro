@@ -1,7 +1,22 @@
 ---
 import siteData from '../data/site.json';
 
-const [siteA, siteB] = siteData.serviceSites;
+interface ServiceSite {
+  badge: string;
+  badgeColor: string;
+  cardAccent: string;
+  glowColor: string;
+  iconBg: string;
+  iconBorder: string;
+  name: string;
+  url: string;
+  description: string;
+  features: string[];
+  ctaText: string;
+}
+
+const serviceSites = siteData.serviceSites as ServiceSite[];
+const [siteA, siteB] = serviceSites;
 
 // SVG path strings for the two service card icons. The badge colour from site.json is
 // injected at build time so each card's accent colour is reflected in the icon strokes.

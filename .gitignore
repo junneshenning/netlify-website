@@ -113,3 +113,6 @@ replit.nix
 # Copilot4PRs / CodeRabbit
 .coderabbit/
 .coderabbit.yaml
+
+# Local Netlify folder
+.netlify

@@ -6,9 +6,16 @@ import { withBase } from '../lib/assetPath';
 
 const { sections } = menu;
 
+interface NavExternalItem {
+  label: string;
+  desc: string;
+  personalKey: string;
+  urlTemplate: string;
+}
+
 // Build external nav links from site.json definitions, skipping any whose personal.json key is empty.
 // This lets site authors add potential platforms to navExternal without requiring all fields be filled.
-const external = siteData.navExternal
+const external = (siteData.navExternal as NavExternalItem[])
   .map((item) => {
     const value = (personalData as unknown as Record<string, string>)[item.personalKey] ?? '';
     if (!value) return null;
@@ -764,7 +771,11 @@ const external = siteData.navExternal
     width: auto;
     display: block;
     transition: filter 0.3s ease;
-    filter: invert(1) brightness(1.8);
+    /* Logo has its own colors — no inversion needed */
+  }
+
+  :global([data-theme='dark']) .header-logo {
+    filter: brightness(1.1);
   }
 
   :global([data-theme='light']) .header-logo {

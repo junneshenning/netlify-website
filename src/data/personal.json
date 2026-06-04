@@ -29,8 +29,10 @@
   "yearsExperience": "10+",
   "volunteer": "",
   "portfolioUrl": "https://www.junneshenning.com",
-  "heroRole": "SysAdmin, IT Manager & Consultant",
-  "heroSocialLinks": ["linkedin"],
+  "heroRole": "SysAdmin, Cloud Architect, IT Manager & Consultant",
+  "heroSocialLinks": [
+    "linkedin"
+  ],
   "bio": "I am a professional in administration, support and maintenance of IT infrastructures!",
   "aboutLong": "Born & raised in Caracas, Venezuela. I'm an enthusiast SysAdmin, specialized in Unix/Linux platforms servers, with 10+ years of experience and certified in ITILv3. I am dedicated to evaluate physical and cloud infrastructure environments to make improvements that increase performance and security, optimizing key business processes through automation, adding value to each project I participate."
 }

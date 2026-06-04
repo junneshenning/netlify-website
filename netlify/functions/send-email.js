@@ -19,6 +19,7 @@ export async function handler(event, context) {
     let payload;
     try {
       payload = JSON.parse(event.body);
+      console.log('Received payload:', payload);
     } catch (e) {
       return {
         statusCode: 400,
@@ -27,7 +28,7 @@ export async function handler(event, context) {
       };
     }
 
-    const { name, email, subject, message, turnstileToken } = payload;
+    const { name, email, subject, message, recaptchaToken } = payload;
 
     // Validate required fields
     if (!name || !email || !subject || !message) {
@@ -38,29 +39,28 @@ export async function handler(event, context) {
       };
     }
 
-    // 1. Verify Cloudflare Turnstile CAPTCHA (if configured)
-    const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
-    if (turnstileSecret) {
-      if (!turnstileToken) {
+    // 1. Verify Google reCAPTCHA (if configured)
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (recaptchaSecret) {
+      if (!recaptchaToken) {
         return {
           statusCode: 400,
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ success: false, message: 'CAPTCHA verification token is missing' }),
+          body: JSON.stringify({ success: false, message: 'Security check failed. Please try again.' }),
         };
       }
 
-      const verifyUrl = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+      const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify';
       const verifyRes = await fetch(verifyUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: `secret=${encodeURIComponent(turnstileSecret)}&response=${encodeURIComponent(turnstileToken)}`,
+        body: `secret=${encodeURIComponent(recaptchaSecret)}&response=${encodeURIComponent(recaptchaToken)}`,
       });
-
       const verifyData = await verifyRes.json();
       if (!verifyData.success) {
-        console.error('Turnstile verification failed:', verifyData);
+        console.error('reCAPTCHA verification failed:', verifyData);
         return {
           statusCode: 400,
           headers: { 'Content-Type': 'application/json' },

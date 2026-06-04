@@ -1,1 +1,79 @@
-[]
+[
+    {
+        "title": "Licores Mundiales",
+        "category": "Retail",
+        "description": "Cloud architecture design and deployment on AWS for the e-commerce website. Ongoing support for new feature rollouts on a complex multi-service architecture.",
+        "images": [
+            "images/portfolio/licores-mundiales-logo.png"
+        ],
+        "slides": [
+            "images/portfolio/licores-mundiales-logo.png"
+        ]
+    },
+    {
+        "title": "Logoscorp",
+        "category": "Technology",
+        "description": "Cloud infrastructure architecture design and deployment for the corporate website, ensuring high availability and optimal performance.",
+        "images": [
+            "images/portfolio/logoscorp-logo.png"
+        ],
+        "slides": [
+            "images/portfolio/logoscorp-logo.png"
+        ]
+    },
+    {
+        "title": "Drogueria Nena",
+        "category": "Healthcare",
+        "description": "Cloud architecture design and configuration for the drugstore website. Ongoing maintenance and support of the cloud infrastructure to ensure uninterrupted operations.",
+        "images": [
+            "images/portfolio/dronena-logo.png"
+        ],
+        "slides": [
+            "images/portfolio/dronena-logo.png"
+        ]
+    },
+    {
+        "title": "Farmacias Xana",
+        "category": "Healthcare",
+        "description": "Cloud architecture design and deployment for the corporate website. Continuous infrastructure maintenance and support, including N8N automation workflows for daily pharmacy closing report processing.",
+        "images": [
+            "images/portfolio/xana-logo.png"
+        ],
+        "slides": [
+            "images/portfolio/xana-logo.png"
+        ]
+    },
+    {
+        "title": "Beca Inmobiliaria",
+        "category": "Real Estate",
+        "description": "Cloud architecture and infrastructure design on GCP. Security and vulnerability audit with corresponding system hardening. SEO strategy implementation to improve organic search positioning.",
+        "images": [
+            "images/portfolio/beca-logo.png"
+        ],
+        "slides": [
+            "images/portfolio/beca-logo.png"
+        ]
+    },
+    {
+        "title": "Mind Melt Creative Agency",
+        "category": "Technology",
+        "description": "Cloud infrastructure architecture design and deployment for the creative agency website, optimizing performance and availability.",
+        "images": [
+            "images/portfolio/mindmelt-logo.png"
+        ],
+        "slides": [
+            "images/portfolio/mindmelt-logo.png"
+        ]
+    },
+    {
+        "title": "The Hachar Law Group",
+        "category": "Legal",
+        "description": "Cloud infrastructure architecture design and deployment for the law firm website, ensuring security and high availability.",
+        "images": [
+            "images/portfolio/hachar-logo.png"
+        ],
+        "slides": [
+            "images/portfolio/hachar-logo.png"
+        ]
+    }
+]

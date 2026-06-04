@@ -1,0 +1,58 @@
+# Bitbucket Pipelines — Build & Deploy to Bitbucket Pages
+#
+# Repository: junneshenning1/junneshenning1.bitbucket.io
+# Pages URL:  https://junneshenning1.bitbucket.io
+#
+# Since the repo name is <workspace>.bitbucket.io, Bitbucket automatically
+# serves it from the root domain — no subdirectory prefix needed (BASE_PATH=/).
+#
+# How it works:
+#   1. Push to main → pipeline triggers automatically
+#   2. npm install + npm run build produce dist/
+#   3. The atlassian/bitbucket-pages-deploy pipe uploads dist/ to Bitbucket Pages
+#
+# Required setup in Bitbucket (one-time):
+#   Repository Settings → Pipelines → Settings:
+#     ✓ Enable Pipelines
+#   Repository Settings → Pipelines → Repository variables (optional):
+#     GITHUB_USER  = your GitHub username (for project image auto-fetching)
+#   Repository Settings → Pipelines → Repository secrets (optional):
+#     GITHUB_TOKEN = GitHub personal access token (for authenticated API calls)
+
+image: node:22
+
+pipelines:
+  branches:
+    main:
+      - step:
+          name: Build & Deploy to Bitbucket Pages
+          deployment: production
+          script:
+            # Auto-detect the Pages URL from Bitbucket workspace/repo metadata.
+            # For a <workspace>.bitbucket.io repo, Bitbucket serves from root.
+            # For other repos, it serves from /<repo-name>/.
+            - |
+              WORKSPACE=$(echo "$BITBUCKET_WORKSPACE" | tr '[:upper:]' '[:lower:]')
+              REPO=$(echo "$BITBUCKET_REPO_SLUG" | tr '[:upper:]' '[:lower:]')
+              if [ -z "$SITE_URL" ]; then
+                if [ "$REPO" = "${WORKSPACE}.bitbucket.io" ]; then
+                  export SITE_URL="https://${WORKSPACE}.bitbucket.io"
+                else
+                  export SITE_URL="https://${WORKSPACE}.bitbucket.io/${REPO}"
+                fi
+              fi
+              if [ -z "$BASE_PATH" ]; then
+                if [ "$REPO" = "${WORKSPACE}.bitbucket.io" ]; then
+                  export BASE_PATH="/"
+                else
+                  export BASE_PATH="/${REPO}/"
+                fi
+              fi
+            - echo "SITE_URL=$SITE_URL  BASE_PATH=$BASE_PATH"
+            - npm install
+            - npm run build
+            - pipe: atlassian/bitbucket-pages-deploy:1.0.0
+              variables:
+                FOLDER: "dist"
+          artifacts:
+            - dist/**

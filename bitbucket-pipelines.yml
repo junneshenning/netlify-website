@@ -3,14 +3,13 @@
 # Repository: junneshenning1/junneshenning1.bitbucket.io
 # Pages URL:  https://junneshenning1.bitbucket.io
 #
-# Since the repo name is <workspace>.bitbucket.io, Bitbucket serves
-# static content directly from the root of the main branch.
+# Two-branch strategy:
+#   source → All source code (Astro, components, config, etc.)
+#   main   → Only static files (HTML/CSS/JS) — what Bitbucket serves
 #
-# How it works:
-#   1. Push to main → pipeline triggers automatically
-#   2. npm install + npm run build produce dist/
-#   3. Copy dist/ contents to repo root, commit, and push back
-#      → Bitbucket serves the static files at https://junneshenning1.bitbucket.io
+# The pipeline triggers on push to `source`, builds the static site,
+# and force-pushes the output to `main`. Your source code stays untouched
+# in the `source` branch.
 #
 # Required setup in Bitbucket (one-time):
 #   Repository Settings → Pipelines → Settings:
@@ -24,7 +23,7 @@ image: node:22
 
 pipelines:
   branches:
-    main:
+    source:
       - step:
           name: Build & Deploy to Bitbucket Pages
           deployment: production
@@ -53,23 +52,17 @@ pipelines:
             - npm install
             - npm run build
 
-            # Deploy: copy dist/ contents to repo root and push.
-            # Bitbucket serves *.bitbucket.io repos from the root of the main branch.
+            # Deploy: force-push dist/ contents to the `main` branch.
+            # Bitbucket serves *.bitbucket.io repos from the root of main.
             - |
               git config user.email "pipeline@bitbucket.org"
               git config user.name "Bitbucket Pipeline"
-              # Copy built files to a temp location, clear repo root, copy back
-              TEMP_DIR=$(mktemp -d)
-              # Preserve the .git directory and bitbucket-pipelines.yml
-              cp -r dist/* "$TEMP_DIR"
-              cp -r dist/.??* "$TEMP_DIR" 2>/dev/null || true
-              # Remove all tracked files from the repo root (keep .git and pipelines config)
-              git rm -r --cached . 2>/dev/null || true
-              find . -maxdepth 1 -not -name '.git' -not -name 'bitbucket-pipelines.yml' -not -name '.' -not -name '..' -exec rm -rf {} \;
-              # Copy built files back to repo root
-              cp -r "$TEMP_DIR"/* .
-              cp -r "$TEMP_DIR"/.??* . 2>/dev/null || true
-              # Stage, commit, and push
+              git push origin --delete main 2>/dev/null || true
+              git checkout --orphan main
+              git rm -rf .
+              # Copy built files from dist/ to repo root
+              cp -r dist/* .
+              cp -r dist/.??* . 2>/dev/null || true
               git add -A
-              git commit -m "Deploy: $(date -u +'%Y-%m-%d %H:%M:%S UTC') [skip ci]" || echo "Nothing to commit"
-              git push origin main
+              git commit -m "Deploy: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+              git push origin main --force

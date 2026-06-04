@@ -1,12 +1,13 @@
 [
   {
-    "title": "Cloud Architect & IT Consultant",
+    "title": "SRE",
     "featured": true,
     "resume": true,
     "company": "AcidLabs (formerly Linets Chile SpA)",
     "category": "Experience",
-    "description": "Cloud architecture design, infrastructure management, and IT consulting. Led migration and integration efforts during the Linets Chile SpA merger into AcidLabs in May 2023. Jun 2022 - Present.",
+    "description": "Site Reliability Engineering, cloud architecture design, infrastructure management, and IT consulting. Led migration and integration efforts during the Linets Chile SpA merger into AcidLabs in May 2023. Jun 2022 - Present.",
     "tags": [
+      "SRE",
       "Cloud Architecture",
       "IT Consulting",
       "Infrastructure",
@@ -16,7 +17,7 @@
     "link": ""
   },
   {
-    "title": "Cloud Architect & Infrastructure Consultant",
+    "title": "Architecture Manager",
     "featured": true,
     "resume": true,
     "company": "Droguería Nena, C.A.",
@@ -24,6 +25,7 @@
     "description": "Cloud architecture design and infrastructure configuration for the drugstore website. Ongoing maintenance, security hardening, and N8N workflow automation. Jun 2025 - Present.",
     "tags": [
       "Cloud Architecture",
+      "Architecture Management",
       "Security",
       "Automation",
       "N8N"

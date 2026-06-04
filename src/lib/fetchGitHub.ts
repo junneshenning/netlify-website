@@ -173,13 +173,18 @@ export interface ProjectEntry {
   githubRepo?: string;
 }
 
-// Singleton promise: Astro evaluates Hero.astro and Projects.astro in the same build pass.
-// Both call augmentProjectsWithImages — memoizing here avoids duplicate GitHub API calls
+// During build, Astro evaluates Hero.astro and Projects.astro in the same pass.
+// Both call augmentProjectsWithImages — memoizing avoids duplicate GitHub API calls
 // and a race condition where two parallel writes could corrupt the on-disk cache.
+// Cache key is the number of projects with githubRepo so HMR in dev mode
+// correctly invalidates when projects.json changes.
 let _buildResult: Promise<ProjectEntry[]> | null = null;
+let _buildResultKey = 0;
 
 export async function augmentProjectsWithImages(projects: ProjectEntry[]): Promise<ProjectEntry[]> {
-  if (_buildResult) return _buildResult;
+  const key = projects.filter((p) => p.githubRepo).length;
+  if (_buildResult && _buildResultKey === key) return _buildResult;
+  _buildResultKey = key;
   _buildResult = _doAugment(projects);
   return _buildResult;
 }
